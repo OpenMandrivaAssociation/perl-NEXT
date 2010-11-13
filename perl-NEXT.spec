@@ -1,9 +1,9 @@
 %define upstream_name    NEXT
-%define upstream_version 0.64
+%define upstream_version 0.65
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 2
+Release:    %mkrel 1
 
 Summary:    Perl5 implementation of NEXT (RFC190)
 License:    GPL+ or Artistic
