@@ -1,19 +1,18 @@
 %define upstream_name    NEXT
 %define upstream_version 0.65
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 2
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	3
 
-Summary:    Perl5 implementation of NEXT (RFC190)
-License:    GPL+ or Artistic
-Group:      Development/Perl
-Url:        http://search.cpan.org/dist/%{upstream_name}
-Source0:    http://www.cpan.org/modules/by-module//%{upstream_name}-%{upstream_version}.tar.gz
+Summary:	Perl5 implementation of NEXT (RFC190)
+License:	GPL+ or Artistic
+Group:		Development/Perl
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/modules/by-module//%{upstream_name}-%{upstream_version}.tar.gz
 
-
-BuildArch: noarch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
+BuildRequires:	perl-devel
+BuildArch:	noarch
 
 %description
 NEXT.pm adds a pseudoclass named 'NEXT' to any program that uses it. If a
@@ -34,24 +33,37 @@ for a suitable method in other ancestors of '$self' -- whereas
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-
-%{make}
+perl Makefile.PL INSTALLDIRS=vendor
+%make
 
 %check
-%{make} test
+%make test
 
 %install
-rm -rf %buildroot
 %makeinstall_std
 
-%clean
-rm -rf %buildroot
-
 %files
-%defattr(-,root,root)
 %doc Changes README
 %{_mandir}/man3/*
-%perl_vendorlib/*
+%{perl_vendorlib}/*
+
+%changelog
+* Sat Apr 23 2011 Funda Wang <fwang@mandriva.org> 0.650.0-2mdv2011.0
++ Revision: 656947
+- rebuild for updated spec-helper
+
+* Sat Nov 13 2010 Jérôme Quelin <jquelin@mandriva.org> 0.650.0-1mdv2011.0
++ Revision: 597193
+- update to 0.65
+
+* Tue Jul 13 2010 Jérôme Quelin <jquelin@mandriva.org> 0.640.0-2mdv2011.0
++ Revision: 552184
+- rebuild
+
+* Sun Jul 12 2009 Jérôme Quelin <jquelin@mandriva.org> 0.640.0-1mdv2010.0
++ Revision: 395221
+- import perl-NEXT
 
 
+* Sun Jul 12 2009 cpan2dist 0.64-1mdv
+- initial mdv release, generated with cpan2dist
