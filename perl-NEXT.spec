@@ -1,15 +1,15 @@
 %define upstream_name    NEXT
-%define upstream_version 0.65
+%define upstream_version 0.69
 
 Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
-Release:	5
+Version:	%{upstream_version}
+Release:	1
 
 Summary:	Perl5 implementation of NEXT (RFC190)
 License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:		https://search.cpan.org/dist/%{upstream_name}
-Source0:	http://www.cpan.org/modules/by-module//%{upstream_name}-%{upstream_version}.tar.gz
+Url:		https://github.com/neilb/next
+Source0:	https://cpan.metacpan.org/authors/id/N/NE/NEILB/NEXT-%{upstream_version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
